@@ -2,9 +2,9 @@
   <div class="hero-body">
     <div class="container">
       <div class="principal-title">
-        <h1 v-if="index < 18" class="principal-title-dot title is-1">{{titleText}}</h1>
+        <h1 v-if="!view" class="principal-title-dot title is-1">{{titleText}}</h1>
         <h1 v-else class="principal-title-text title is-1" >{{title}}</h1>
-        <h2 v-if="index >= 18" class="principal-title-subtitle subtitle">
+        <h2 v-if="view" class="principal-title-subtitle subtitle">
           Uma impressora de Braille de baixo custo, acessivel a todos!
         </h2>
       </div>
@@ -18,7 +18,8 @@ export default {
     return {
       title: 'Projeto Print-Dots',
       titleText: '',
-      index: 0
+      index: 0,
+      view: false
     }
   },
   created() {
@@ -29,7 +30,7 @@ export default {
     callToAddTitlle() {
       setInterval(() => {
         this.teleType()
-      }, 100)
+      }, 200)
     },
 
     teleType() {
@@ -39,6 +40,11 @@ export default {
       if (!(this.index > bTitle.length - 1)) {
         this.titleText += bTitle[this.index]
         this.index++
+      }
+      if(this.index >=18) {
+        setTimeout(() => {
+          this.view = true
+        }, 1800);
       }
       return
     }
@@ -55,8 +61,8 @@ export default {
 
 .principal-title-dot {
   animation: fade-out ease-out;
-  animation-duration: .2s;
-  animation-delay: 1.58s;
+  animation-duration: .3s;
+  animation-delay: 5.16s;
 }
 
 .principal-title-text {

@@ -54,9 +54,12 @@ export default {
 <style>
 .principal-title {
   text-align: center;
-  font-size: 20px;
   color: black;
   font-weight: bold;
+}
+
+.title.is-1 {
+  font-size: 4rem;
 }
 
 .principal-title-dot {
